@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"command": [
+				"catalina.bat"
+			],
+			"args": [
+				"run"
+			],
+			"options": {
+				"cwd": "D:\\apache-tomcat-8.5.31\\bin"
+			},
+			"problemMatcher": [],
+			"label": "tomcat start",
+			"group": "build",
+		},
+		{
+			"type": "shell",
+			"label": "tomcat deploy",
+			"command": "cp '${workspaceFolder}/user.xml' ${config:tomcat.home}/conf/Catalina/localhost/",
+			"problemMatcher": [],
+			"options": {
+				"shell": {
+					"executable": "D:\\Program Files\\Git\\bin\\bash.exe",
+					"args": ["-c"]
+				}
+			}
+		}
+	]
+}
