@@ -8,6 +8,6 @@
     // task任务
     "tomcat.home": "D:/apache-tomcat-8.5.31",
     // "files.associations": {
-    //     "*.jsp": "html"
+    //     "*.jsp": "html",
     // },
 }

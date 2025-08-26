@@ -1,11 +1,13 @@
 package top.fycoding.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import top.fycoding.dao.UserDao;
+import top.fycoding.domain.BuilderWhere;
 import top.fycoding.domain.UserModel;
 import top.fycoding.utils.JDBCUtil;
 
@@ -38,16 +40,28 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<UserModel> findAll() {
-        String sql = "select * from user";
-        List<UserModel> result = template.query(sql, new BeanPropertyRowMapper<UserModel>(UserModel.class));
+    public List<UserModel> findAll(Map<String, String> searchFields) {
+        String sql = "SELECT * FROM user ";
+        BuilderWhere bw = new BuilderWhere(searchFields);
+        sql += bw.getWhere();
+        List<UserModel> result = template.query(
+            sql, 
+            new BeanPropertyRowMapper<UserModel>(UserModel.class),
+            bw.getParams().toArray()
+            );
         return result;
     }
 
     @Override
-    public int getTotal() {
-        String sql = "select count(*) from user";
-        return template.queryForObject(sql, Integer.class);
+    public int getTotal(Map<String, String> searchFields) {
+        BuilderWhere bw = new BuilderWhere(searchFields);
+        String sql = "SELECT COUNT(*) FROM user ";
+        sql += bw.getWhere();
+        Integer total = template.queryForObject(
+            sql, 
+            Integer.class,
+            bw.getParams().toArray());
+        return total;
     }
     
 }

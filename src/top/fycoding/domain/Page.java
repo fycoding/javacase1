@@ -1,5 +1,6 @@
 package top.fycoding.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Page {
@@ -10,10 +11,12 @@ public class Page {
     // 总数量
     private int total;
     // 页码
-    private List<String> pageList;
+    private List<Integer> pageList = new ArrayList<Integer>();
+    
+
     private int maxPage = 1;
 
-    Page(int total) {
+    public Page(int total) {
         this.total = total;
         this.calculateMaxPage();
         this.generatePageList();
@@ -25,7 +28,7 @@ public class Page {
 
     private void generatePageList() {
         for (int i = 1; i <= this.maxPage; i++) {
-            pageList.add(String.valueOf(i));
+            pageList.add(i);
         }
     }
 
@@ -51,5 +54,9 @@ public class Page {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public List<Integer> getPageList() {
+        return pageList;
     }
 }

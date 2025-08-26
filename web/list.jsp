@@ -42,14 +42,14 @@ initial-scale: 初始的缩放比，为1:1 -->
         <h3 style="text-align: center">用户信息列表</h3>
         <div class="toolbar row">
             <div class="col-xs-10">
-                <form class="form-inline">
+                <form class="form-inline search">
                     <div class="form-group">
                         <label for="exampleInputName2">姓名</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputName2" placeholder="请输入姓名">
+                        <input type="text" name="name" value="${search.name}" class="form-control" id="exampleInputName2" placeholder="请输入姓名">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail2">邮箱</label>
-                        <input name="email" type="text" class="form-control" id="exampleInputEmail2"
+                        <input name="email" type="text" value="${search.email}" class="form-control" id="exampleInputEmail2"
                                 placeholder="请输入邮箱">
                     </div>
                     <button type="button" class="btn btn-default submit">搜索</button>
@@ -88,18 +88,16 @@ initial-scale: 初始的缩放比，为1:1 -->
         <!-- 分页 -->
         <nav aria-label="Page navigation">
             <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
+                <li class="prevPage">
+                    <a href="javascript:;">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="active"><a href="javascript:;">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
+                <c:forEach items="${page.pageList}" var="item">
+                    <li class='page-item ${page.page == item ? "active" : ""}'><a href="javascript:;">${item}</a></li>
+                </c:forEach>
+                <li class="nextPage">
+                    <a href="javascript:;">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
@@ -109,5 +107,4 @@ initial-scale: 初始的缩放比，为1:1 -->
 </body>
 
 <script src="js/user.js"></script>
-
 </html>
