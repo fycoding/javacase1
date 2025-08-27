@@ -26,7 +26,7 @@
 <body>
 <div class="container">
     <center><h3>添加联系人页面</h3></center>
-    <form action="" method="post">
+    <form action="/user/add" method="post">
         <div class="form-group">
             <label for="name">姓名：</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="请输入姓名">
@@ -45,7 +45,7 @@
 
         <div class="form-group">
             <label for="address">籍贯：</label>
-            <select name="address" class="form-control" id="jiguan">
+            <select name="addr" class="form-control" id="jiguan">
                 <option value="广东">广东</option>
                 <option value="广西">广西</option>
                 <option value="湖南">湖南</option>
@@ -54,7 +54,7 @@
 
         <div class="form-group">
             <label for="qq">QQ：</label>
-            <input type="text" class="form-control" name="qq" placeholder="请输入QQ号码"/>
+            <input type="text" class="form-control" name="QQ" placeholder="请输入QQ号码"/>
         </div>
 
         <div class="form-group">
@@ -65,9 +65,14 @@
         <div class="form-group" style="text-align: center">
             <input class="btn btn-primary" type="submit" value="提交" />
             <input class="btn btn-default" type="reset" value="重置" />
-            <input class="btn btn-default" type="button" value="返回" />
+            <input class="btn btn-default back" type="button" value="返回" />
         </div>
     </form>
 </div>
 </body>
+<script>
+    document.querySelector('.back').addEventListener('click', function() {
+        window.history.back();
+    })
+</script>
 </html>

@@ -10,5 +10,9 @@ public interface UserService {
     List<UserModel> findAll(Map<String, String> searchFields);
 
     int getTotal(Map<String, String> searchFields);
+
+    void add(Map<String, String[]> params);
+
+    void delete(String id);
     
 }

@@ -71,9 +71,9 @@ initial-scale: 初始的缩放比，为1:1 -->
                 <th>邮箱</th>
                 <th>操作</th>
             </tr>
-            <c:forEach items="${list}" var="user">
+            <c:forEach items="${list}" var="user" varStatus="status">
             <tr>
-                <td>1</td>
+                <td>${status.index + 1}</td>
                 <td>${user.name}</td>
                 <td>${user.sex}</td>
                 <td>${user.age}</td>
@@ -81,7 +81,7 @@ initial-scale: 初始的缩放比，为1:1 -->
                 <td>${user.QQ}</td>
                 <td>${user.email}</td>
                 <td><a class="btn btn-default btn-sm" href="update.jsp">修改</a>&nbsp;<a
-                        class="btn btn-default btn-sm" href="">删除</a></td>
+                        class="btn btn-default btn-sm" href="/user/delete?id=${user.id}">删除</a></td>
             </tr>
             </c:forEach>
         </table>

@@ -16,9 +16,9 @@ public class UserDaoImpl implements UserDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtil.getDataSource());
 
     @Override
-    public boolean add(UserModel u) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    public int add(UserModel u) {
+        String sql = "insert into user values(null,?,?,?,?,?,?)";
+        return template.update(sql, u.getName(), u.getSex(), u.getAge(), u.getAddr(), u.getQQ(), u.getEmail());
     }
 
     @Override
@@ -28,9 +28,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public int delete(int id) {
+        String sql = "delete from user where id = ?";
+        return template.update(sql, id);
     }
 
     @Override

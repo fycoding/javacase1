@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Page {
     // 一页多少个
-    private int limit = 10;
+    private int limit = 5;
     // 当前页码
     private int page = 1;
     // 总数量

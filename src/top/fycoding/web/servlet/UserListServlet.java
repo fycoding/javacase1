@@ -36,6 +36,7 @@ public class UserListServlet extends HttpServlet{
         // 页码设置
         Page page = new Page(us.getTotal(searchFields));
         String curPage = req.getParameter("page");
+        if(curPage == null) curPage = "1";
         page.setPage(Integer.parseInt(curPage));
 
         // 查询数据
@@ -47,6 +48,11 @@ public class UserListServlet extends HttpServlet{
 
         // 转发给jsp
         req.getRequestDispatcher("list.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req, resp);
     }
     
 }

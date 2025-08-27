@@ -1,5 +1,7 @@
 {
-    "java.project.sourcePaths": ["src"],
+    "java.project.sourcePaths": [
+        "src"
+    ],
     "java.project.outputPath": "web/WEB-INF/classes",
     "java.project.referencedLibraries": [
         "web/WEB-INF/lib/**/*.jar",
@@ -7,7 +9,4 @@
     ],
     // task任务
     "tomcat.home": "D:/apache-tomcat-8.5.31",
-    // "files.associations": {
-    //     "*.jsp": "html",
-    // },
 }
